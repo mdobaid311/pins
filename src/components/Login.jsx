@@ -6,7 +6,6 @@ import shareVideo from '../assets/share.mp4';
 import logo from '../assets/logo.png';
 
 import { client } from '../client';
-
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (response) => {
