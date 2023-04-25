@@ -53,6 +53,9 @@ const GetCreative = ({ user }) => {
   };
 
   const generateImage = async () => {
+    if (imageURL) {
+      setImageURL(null);
+    }
     setLoading(true);
     const response = await axios.post(
       "http://localhost:5303/api/v1/dalle/generate",
@@ -69,20 +72,13 @@ const GetCreative = ({ user }) => {
   };
 
   const savePin = () => {
-    if (title && about && destination && imageAsset?._id && category) {
+    if (title && about && destination && imageURL && category) {
       const doc = {
         _type: "pin",
         title,
         about,
         destination,
-        image: {
-          _type: "image",
-          asset: {
-            _type: "reference",
-            _ref: imageAsset?._id,
-          },
-        },
-        ImageURL: imageURL,
+        imageURL: imageURL,
         userId: user._id,
         postedBy: {
           _type: "postedBy",
@@ -198,7 +194,7 @@ const GetCreative = ({ user }) => {
             />
             <input
               type="url"
-              vlaue={destination}
+              value={destination}
               onChange={(e) => setDestination(e.target.value)}
               placeholder="Add a destination link"
               className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2"

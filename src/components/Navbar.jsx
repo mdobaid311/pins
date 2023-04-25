@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { IoMdAdd, IoMdSearch } from 'react-icons/io';
+import { IoMdAdd, IoMdSearch,IoMdCreate } from 'react-icons/io';
 
 const Navbar = ({ searchTerm, setSearchTerm, user }) => {
   const navigate = useNavigate();
@@ -25,6 +25,9 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
           </Link>
           <Link to="/create-pin" className="bg-black text-white rounded-lg w-12 h-12 md:w-14 md:h-12 flex justify-center items-center">
             <IoMdAdd />
+          </Link>
+          <Link to="/get-creative" className="bg-black text-white rounded-lg w-12 h-12 md:w-14 md:h-12 flex justify-center items-center">
+            <IoMdCreate />
           </Link>
         </div>
       </div>
